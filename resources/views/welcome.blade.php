@@ -150,7 +150,24 @@
                 },
                 success: function (res) {
                     if (res.success) {
-
+                        switch (res.responseCode){
+                            case 1:
+                                toastr.error(res.responseReasonText);
+                                break;
+                            case 2:
+                                toastr.success(res.responseReasonText);
+                                break;
+                            case 3:
+                                toastr.error(res.responseReasonText);
+                                break;
+                            case 4:
+                                toastr.warning(res.responseReasonText);
+                                break;
+                        }
+                        toastr.options.onHidden = function() {
+                            window.location = res.bankURL;
+                        };
+                        toastr.options.onCloseClick = function() { window.location = res.bankURL; };
                     } else {
                         toastr.error(res.responseReasonText);
                     }

@@ -36,6 +36,9 @@ class CreateTransactionsTable extends Migration
             $table->string("ipAddress",15);
             $table->string("userAgent");
             $table->string("additionalData");
+            $table->string("bankURL");
+            $table->smallInteger("responseCode");
+            $table->string("responseReasonText");
             $table->timestamps();
         });
     }

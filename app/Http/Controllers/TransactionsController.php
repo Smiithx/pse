@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Person;
+use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -82,7 +83,37 @@ class TransactionsController extends Controller
                 "auth" => $param_auth,
                 "transaction" => $param_transaction,
             ]);
+            $output = new \stdClass();
+            if ($result->success) {
+                $output->success = true;
+                $output->bankURL = $result->bankURL;
+                $output->responseCode = $result->responseCode;
+                $transaction = Transaction::create([
+                    "transactionID" => $result->transactionID,
+                    "bankURL" => $result->bankURL,
+                    "responseCode" => $result->responseCode,
+                    "responseReasonText" => $result->responseReasonText,
+                    "bankCode" => $request->banco,
+                    "bankInterface" => $tipo_cliente,
+                    "returnURL" => url("/transactions/register"),
+                    "reference" => $request->reference,
+                    "description" => $request->description,
+                    "language" => "ES",
+                    "currency" => "COP",
+                    "totalAmount" => $request->totalAmount,
+                    "taxAmount" => $request->taxAmount,
+                    "devolutionBase" => $request->devolutionBase,
+                    "tipAmount" => $request->tipAmount,
+                    "ipAddress" => $request->ip(),
+                    "userAgent" => $request->userAgent(),
+                    "player_id" => $pagador->id,
+                    "buyer_id" => $comprador->id,
+                    "shipping_id" => $receptor->id,
+                ]);
+            }
+            $output->responseReasonText = $result->responseReasonText;
             Log::debug(json_encode($result));
+
             return response()->json($result);
         } catch (\SoapFault $fault) {
             $error = [
