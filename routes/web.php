@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/test',function($request){
+    $ip = $request->ip();
+    return response()->json($ip);
+});
 Route::get('/',"TransferenciaController@index");
 
 Route::resource('/transactions',"TransactionsController");
