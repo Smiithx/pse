@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/test',function($request){
+Route::get('/test',function(\Illuminate\Http\Request $request){
     $ip = $request->ip();
     return response()->json($ip);
 });
