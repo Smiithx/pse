@@ -6,12 +6,12 @@
                 <table class="table responsive table-vcenter dataTable no-footer" id="tabla_transaction">
                     <thead class="">
                     <tr>
+                        <th>TransactionID</th>
                         <th>Pagador</th>
                         <th>Comprador</th>
                         <th>Receptor</th>
                         <th>Valor total</th>
                         <th>Estado</th>
-                        <th>Opciones</th>
                     </tr>
                     </thead>
                 </table>
@@ -36,6 +36,7 @@
                     dataSrc: '',
                 },
                 'columns': [
+                    {data: 'transactionID'},
                     {data: 'player.full_name'},
                     {data: 'buyer.full_name'},
                     {data: 'shipping.full_name'},

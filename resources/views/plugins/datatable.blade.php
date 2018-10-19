@@ -1,10 +1,10 @@
 @push('css')
-<link rel="stylesheet" href="{{asset('plugins/css/dataTables.bootstrap.css')}}">
+<link rel="stylesheet" href="{{asset('plugins/datatables/css/dataTables.bootstrap.css')}}">
 @endpush
 
 @push('js')
-<script src="{{asset('plugins/js/jquery.dataTables.js')}}"></script>
-<script src="{{asset('plugins/js/dataTables.bootstrap.js')}}"></script>
+<script src="{{asset('plugins/datatables/js/jquery.dataTables.js')}}"></script>
+<script src="{{asset('plugins/datatables/js/dataTables.bootstrap.js')}}"></script>
 <script>
     $(function () {
         $.fn.dataTable.ext.errMode = 'none';

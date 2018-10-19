@@ -15,9 +15,14 @@ class TransactionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
+        if($request->ajax()){
+            $transactions = Transaction::with("player")->with("buyer")->with("shipping")->get();
+            return response()->json($transactions);
+        }else{
+            return view("transaction.index");
+        }
     }
 
     /**

@@ -14,4 +14,7 @@ class Person extends Model
         return ucwords("$this->firstName $this->lastName");
     }
 
+    public function transactions(){
+        return $this->hasMany(Transaction::class);
+    }
 }
