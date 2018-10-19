@@ -71,6 +71,11 @@
                         <input type="number" name="devolutionBase" id="devolutionBase" class="form-control" step="0.01">
                     </div>
                 </div>
+            </fieldset>
+        </div>
+        <div class="row">
+            <fliendset>
+                <legend>Medios de pago</legend>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="medio_pago">Medio de pago</label>
@@ -106,7 +111,7 @@
                         </select>
                     </div>
                 </div>
-            </fieldset>
+            </fliendset>
         </div>
         <div class="row">
             <div class="col-md-12 campos_pse">
@@ -151,16 +156,16 @@
                 success: function (res) {
                     if (res.success) {
                         switch (res.responseCode){
-                            case 1:
+                            case 0:
                                 toastr.error(res.responseReasonText);
                                 break;
-                            case 2:
+                            case 1:
                                 toastr.success(res.responseReasonText);
                                 break;
-                            case 3:
+                            case 2:
                                 toastr.error(res.responseReasonText);
                                 break;
-                            case 4:
+                            case 3:
                                 toastr.warning(res.responseReasonText);
                                 break;
                         }

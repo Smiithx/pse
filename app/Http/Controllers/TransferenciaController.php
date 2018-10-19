@@ -26,7 +26,7 @@ class TransferenciaController extends Controller
                 $seed = date('c');
                 $param = [
                     "login" => config("services.endpoint.auth.login"),
-                    "tranKey" => sha1($seed . config("services.endpoint.auth.trankey")),
+                    "tranKey" => sha1($seed . config("services.endpoint.auth.trankey"),false),
                     "seed" => $seed,
                     "additional" => []
                 ];

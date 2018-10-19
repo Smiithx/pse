@@ -17,17 +17,7 @@ class TransactionsController extends Controller
      */
     public function index()
     {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -63,7 +53,7 @@ class TransactionsController extends Controller
             $param_transaction = [
                 "bankCode" => $request->banco,
                 "bankInterface" => $tipo_cliente,
-                "returnURL" => url("/transactions/register"),
+                "returnURL" => url("transactions"),
                 "reference" => $request->reference,
                 "description" => $request->description,
                 "language" => "ES",

@@ -14,4 +14,3 @@
 Route::get('/',"TransferenciaController@index");
 
 Route::resource('/transactions',"TransactionsController");
-Route::get('/transactions/register',"TransactionsController@register");

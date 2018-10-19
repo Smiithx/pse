@@ -33,6 +33,18 @@
 <script src="{{asset('plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
 <script src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('plugins/toastr/js/toastr.min.js')}}"></script>
+<script>
+    function reloadTooltips() {
+        $("[data-toggle=tooltip]").tooltip();
+    }
+    $(function () {
+        reloadTooltips();
+        $(".atras").click(function (e) {
+            e.preventDefault();
+            window.history.back();
+        });
+    });
+</script>
 @stack("js")
 </body>
 </html>

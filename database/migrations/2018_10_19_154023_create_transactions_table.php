@@ -15,7 +15,7 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("transactionID");
+            $table->unsignedInteger("transactionID");
             $table->string("bankCode",4);
             $table->boolean("bankInterface",1);
             $table->string("returnURL");
