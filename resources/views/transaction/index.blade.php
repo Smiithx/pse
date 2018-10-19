@@ -1,6 +1,13 @@
 @extends("layout.layout")
 @section("content")
     <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="form-group text-right">
+                <a href="{{url("/")}}" class="btn btn-primary">Registrar transacción</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
         <div class="table-responsive">
             <div class="container-fluid">
                 <table class="table responsive table-vcenter dataTable no-footer" id="tabla_transaction">

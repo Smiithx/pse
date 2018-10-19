@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         if (\Illuminate\Support\Facades\App::environment('local')) {
+            \App\Transaction::truncate();
             \App\Person::truncate();
             $this->call(PeopleSeeder::class);
         }

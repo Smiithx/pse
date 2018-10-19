@@ -1,5 +1,12 @@
 @extends("layout.layout")
 @section("content")
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group text-right">
+                <a href="{{url("transactions")}}" class="btn btn-primary">Transacciones registradas</a>
+            </div>
+        </div>
+    </div>
     <form action="{{url("/transactions")}}" method="post" id="form_transaction">
         {{ csrf_field() }}
         <div class="row">
@@ -155,7 +162,7 @@
                 },
                 success: function (res) {
                     if (res.success) {
-                        switch (res.responseCode){
+                        switch (res.responseCode) {
                             case 0:
                                 toastr.error(res.responseReasonText);
                                 break;
@@ -169,10 +176,12 @@
                                 toastr.warning(res.responseReasonText);
                                 break;
                         }
-                        toastr.options.onHidden = function() {
+                        toastr.options.onHidden = function () {
                             window.location = res.bankURL;
                         };
-                        toastr.options.onCloseClick = function() { window.location = res.bankURL; };
+                        toastr.options.onCloseClick = function () {
+                            window.location = res.bankURL;
+                        };
                     } else {
                         toastr.error(res.responseReasonText);
                     }
