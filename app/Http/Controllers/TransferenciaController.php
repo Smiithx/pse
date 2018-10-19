@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Person;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -15,8 +16,9 @@ class TransferenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        //return response()->json((new \League\ISO3166\ISO3166)->all());
         if (!Cache::has("bancos")) {
             Log::debug("cargando bancos");
             try {
@@ -47,10 +49,10 @@ class TransferenciaController extends Controller
             //Log::debug("eliminando bancos");
             //Cache::forget("bancos");
         }
-
         $bancos = Cache::get("bancos");
+        $people = Person::all();
         //return response()->json($bancos);
-        return view("welcome", compact("bancos"));
+        return view("welcome", compact("bancos","countries","people"));
     }
 
     /**
