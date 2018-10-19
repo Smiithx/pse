@@ -170,6 +170,7 @@
                                 break;
                         }
                         toastr.options.onHidden = function() {
+                            console.log("ejecutado");
                             window.location = res.bankURL;
                         };
                         toastr.options.onCloseClick = function() { window.location = res.bankURL; };
